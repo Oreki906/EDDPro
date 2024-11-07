@@ -35,24 +35,39 @@ namespace EDDemo.Estructuras_No_Lineales
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
+            if (int.TryParse(txtDato.Text, out int da))
+            {
 
-            //Obtenemos el nodo Raiz del arbol
-            miRaiz = miArbol.RegresaRaiz();
 
-            //Limpiamos la cadena donde se concatenan los nodos del arbol 
-            miArbol.strArbol = "";
+                //Obtenemos el nodo Raiz del arbol
+                miRaiz = miArbol.RegresaRaiz();
+                //Limpiamos la cadena donde se concatenan los nodos del arbol 
+                miArbol.strArbol = "";
 
-            //Se inserta el nodo con el dato capturado
-            miArbol.InsertaNodo(int.Parse(txtDato.Text),
-                                ref miRaiz);
+                miArbol.enc = false;
+                miArbol.BuscarNodo(miArbol.Raiz, da);
 
-            //Leer arbol completo y mostrarlo en caja de texto
-            miArbol.MuestraArbolAcostado(1, miRaiz);
-            txtArbol.Text = miArbol.strArbol;
-            
-            txtDato.Text = "";
 
- 
+
+                if (!miArbol.enc)
+                {
+                    //Se inserta el nodo con el dato capturado
+                    miArbol.InsertaNodo(da, ref miRaiz);
+
+                }
+                else
+                {
+                    MessageBox.Show("ya esxiste");
+                }
+
+
+                //Leer arbol completo y mostrarlo en caja de texto
+                miArbol.MuestraArbolAcostado(1, miRaiz);
+                txtArbol.Text = miArbol.strArbol;
+
+                txtDato.Text = "";
+            }
+
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -172,6 +187,33 @@ namespace EDDemo.Estructuras_No_Lineales
 
             txtDato.Text = "";
         }
+       
 
+        private void frmArboles_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bntBuscar_Click(object sender, EventArgs e)
+        {
+ if (int.TryParse(txtDato.Text, out int busc))
+            {
+                miArbol.enc = false;
+                miArbol.BuscarNodo(miArbol.Raiz, busc);
+
+                if (miArbol.enc)
+                    MessageBox.Show("el nodo fue encontrado");
+                else
+                {
+                    MessageBox.Show("no se ha encontrado el nodo");
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("ingrese un dato valido");
+            }
+        }
     }
 }

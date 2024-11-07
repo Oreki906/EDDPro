@@ -9,10 +9,10 @@ namespace EDDemo.Estructuras_No_Lineales
 {
     public class ArbolBusqueda
     {
-        NodoBinario Raiz;
+        public NodoBinario Raiz;
         public String strArbol;
         public String strRecorrido;
-
+        public bool enc = false;
         public ArbolBusqueda()
         {
             Raiz = null;
@@ -111,6 +111,20 @@ namespace EDDemo.Estructuras_No_Lineales
 
             return;
          }
+        public void BuscarNodo(NodoBinario nodo, int valor)
+        {
+            if (nodo == null || enc)
+                return;
+
+
+            if (nodo.Dato == valor)
+            {
+                enc = true;
+                return;
+            }
+            BuscarNodo(nodo.Izq, valor);
+            BuscarNodo(nodo.Der, valor);
+        }
 
     }
 }
