@@ -8,7 +8,9 @@ namespace EDDemo
 {
     public class Nodo
     {
-        public String Dato;
-        public Nodo sig;
+        public int Dato;//valor del nodo 
+        public Nodo Sig;//apuntador 
+        public Nodo prev;
+        
     }
 }

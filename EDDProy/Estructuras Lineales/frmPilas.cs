@@ -25,6 +25,19 @@ namespace EDDemo
             Pilas miPila = new Pilas();
             miPila.Push();          
         }
+
+        private void frmPilas_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btBuscar_Click(object sender, EventArgs e)
+        {
+            buscar();
+            txtDatos.Text = "";//blanquea el ingreso de los dATOS 
+
+            txtDatos.Focus();//para no volver a hacer clic eb la barra 
+        }
         //comentario
     }
 }
